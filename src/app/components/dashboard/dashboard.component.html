@@ -1,1 +1,39 @@
-<p>dashboard works!</p>
+<div
+  class="min-h-screen bg-ozark-900 text-white p-10 flex flex-col items-center justify-start"
+>
+  <h1 class="text-4xl font-bold mb-8 text-ozark-accent mt-10">ØZARK</h1>
+
+  <div
+    class="bg-ozark-800 p-8 rounded-xl shadow-2xl border border-ozark-700 w-full max-w-md text-center"
+  >
+    <p class="text-gray-400 mb-6">
+      Upload your Bank Statement (CSV only for now)
+    </p>
+
+    <label class="block cursor-pointer">
+      <span class="sr-only">Choose file</span>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        class="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-ozark-accent file:text-ozark-900 hover:file:bg-cyan-400"
+      />
+    </label>
+  </div>
+
+  <div *ngIf="fileName" class="mt-8 w-full max-w-4xl animate-pulse">
+    <div
+      class="bg-ozark-800 rounded-xl border border-ozark-700 overflow-hidden"
+    >
+      <div class="bg-ozark-700 px-6 py-4 flex justify-between items-center">
+        <span class="font-bold text-white">File: {{ fileName }}</span>
+        <span class="text-xs text-green-400 font-mono">READ SUCCESS</span>
+      </div>
+
+      <div
+        class="p-6 bg-black font-mono text-sm text-gray-300 overflow-auto max-h-96 whitespace-pre-wrap"
+      >
+        {{ fileContent }}
+      </div>
+    </div>
+  </div>
+</div>
